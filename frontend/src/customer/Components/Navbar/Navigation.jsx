@@ -442,11 +442,7 @@ export default function Navigation() {
               <div className="ml-4 flex lg:ml-0">
                 <Link to="/">
                   <span className="sr-only">Your Company</span>
-                  <img
-                    src="/logo.png"
-                    alt="ShopWithUs"
-                    className="h-8 w-16 sm:h-10 sm:w-20 mr-2 font-bold"
-                  />
+                  <p className="font-bold text-xl">Shopssy</p>
                 </Link>
               </div>
 
