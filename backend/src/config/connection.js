@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 
 const connection = () =>{
 
-mongoose.connect('mongodb+srv://developmentinfayou_db_user:DLpYMWLmn2EaWhse@cluster0.ztvpgrd.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+mongoose.connect('mongodb+srv://developmentinfayou_db_user:DLpYMWLmn2EaWhse@cluster0.ztvpgrd.mongodb.net/test?retryWrites=true&w=majority&appName=Cluster0')
 
 .then(()=>{
     console.log("Database sucessfully connected!")
