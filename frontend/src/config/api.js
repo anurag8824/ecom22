@@ -1,8 +1,8 @@
 
 import axios from 'axios';
 // const DEPLOYED='https://api.paze3.com/'
-// const LOCALHOST='https://ecoback2.vercel.app'
-const LOCALHOST='http://localhost:5454'
+const LOCALHOST='https://ecoback2.vercel.app'
+// const LOCALHOST='http://localhost:5454'
 
 
 export const API_BASE_URL = LOCALHOST;
