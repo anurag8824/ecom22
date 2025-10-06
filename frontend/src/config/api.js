@@ -1,7 +1,7 @@
 
 import axios from 'axios';
 // const DEPLOYED='https://api.paze3.com/'
-const LOCALHOST='https://ecom22backend.vercel.app'
+const LOCALHOST='https://ecoback2.vercel.app'
 // const LOCALHOST='http://localhost:5454'
 
 

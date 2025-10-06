@@ -21,6 +21,7 @@ const categoryController = {
   // Get all categories
   getAllCategories: async (req, res) => {
     try {
+      console.log("Fetching all categories...");
       const categories = await categoryService.getAllCategories();
       res.status(200).json({
         success: true,

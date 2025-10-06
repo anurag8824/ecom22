@@ -18,6 +18,7 @@ const categoryService = {
   // Get all categories
   getAllCategories: async () => {
     try {
+      console.log("Fetched categories successfully");
       return await CategoryModel.find({});
     } catch (error) {
       throw new Error(`Error fetching categories: ${error.message}`);
