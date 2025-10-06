@@ -58,7 +58,7 @@ const HomeProductCard = ({ product }) => {
 
         {/* Title */}
         <h3 className="text-sm font-medium text-gray-900 mb-2 flex-1">
-          {truncateText(product?.title, 45)}
+          {truncateText(product?.title, 12)}
         </h3>
 
         {/* Pricing */}

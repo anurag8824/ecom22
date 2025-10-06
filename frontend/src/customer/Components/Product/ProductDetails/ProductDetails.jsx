@@ -11,6 +11,7 @@ import { addItemToCart } from "../../../../Redux/Customers/Cart/Action";
 import { getAllReviews } from "../../../../Redux/Customers/Review/Action";
 import { gounsPage1 } from "../../../../Data/Gouns/gouns";
 import { addToWishlist } from "../../../../Redux/Customers/Wishlist/Action";
+import TopNoticeBar from "../../TopNoticeBar";
 
 const highlights = ["Hand cut and sewn locally", "Dyed with our proprietary colors", "Pre-washed & pre-shrunk", "Ultra-soft 100% cotton"];
 const details = 'The 6-Pack includes two black, two white, and two heather gray Basic Tees. Sign up for our subscription service and be the first to get new, exciting colors.';
@@ -147,6 +148,7 @@ export default function ProductDetails() {
           </ol>
         </nav>
 
+<TopNoticeBar/>
         {/* Product Details */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
           {/* Image */}
@@ -301,9 +303,9 @@ export default function ProductDetails() {
         {/* Similar Products */}
         <section>
           <h2 className="text-2xl font-bold text-gray-900 mb-8">Similar Products</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="flex overflow-x-auto space-x-1 scrollbar-hide py-2">
             {gounsPage1.slice(0, 8).map((item, index) => (
-              <div key={index} className="transform hover:scale-105 transition-transform duration-200">
+              <div key={index} className="transform flex justify-center hover:scale-105 transition-transform duration-200">
                 <HomeProductCard product={item} />
               </div>
             ))}

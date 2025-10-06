@@ -88,14 +88,15 @@ const Homepage = () => {
       </div>
     );
   }
+  console.log(categories,"categoriess")
 
   return (
     <div className="">
-    <div>
+      <div>
         <img className="w-full" src="https://rukminim3.flixcart.com/fk-p-flap/780/108/image/06d7d6cc488d4f2f.jpg?q=60" />
       </div>
 
-      
+
       <div>
         <img className="w-full" src="https://rukminim3.flixcart.com/fk-p-flap/780/108/image/97194f4d7d713631.jpg?q=60" />
       </div>
@@ -113,9 +114,9 @@ const Homepage = () => {
       </div>
 
 
-     
 
-      
+
+
 
       <div className="grid grid-cols-3 md:grid-cols-3 gap-4 p-4">
         <img
@@ -174,7 +175,7 @@ const Homepage = () => {
       </div>
 
       <Home4block />
-      
+
 
       <div>
         <img className="w-full" src="https://rukminim3.flixcart.com/fk-p-flap/780/173/image/26d3f957d73c7fe3.jpg?q=60" />
@@ -185,9 +186,9 @@ const Homepage = () => {
       <div>
         <img className="w-full" src="https://rukminim3.flixcart.com/fk-p-flap/780/108/image/a5c59bcd87f8faf4.jpg?q=60" />
       </div>
-      
+
       <Home4block3 />
-      
+
 
 
 

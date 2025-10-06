@@ -51,10 +51,10 @@ const CreateProductForm = () => {
     : [];
 
   useEffect(() => {
-    if (jwt) {
+    // if (jwt) {
       dispatch(getCategories(jwt));
       dispatch(getAllSubCategories(jwt));
-    }
+    // }
   }, [dispatch, jwt]);
 
   const handleChange = (e) => {

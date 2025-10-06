@@ -145,7 +145,7 @@ export const navigation = {
       sections: [
         {
           id: 'women_clothing',
-          name: 'Women Clothing',
+          name: 'Women Accessories',
           items: [
             { name: 'Tops', id: 'top', href: '/clothing/women/tops' },
             { name: 'Dresses', id: 'women_dress', href: '/clothing/women/dresses' },
@@ -161,7 +161,7 @@ export const navigation = {
         },
         {
           id: 'men_clothing',
-          name: 'Men Clothing',
+          name: 'Men Accessories',
           items: [
             { name: 'Shirts', id: 'shirts', href: '/clothing/men/shirts' },
             { name: 'T-Shirts', id: 'tshirts', href: '/clothing/men/t-shirts' },
@@ -240,7 +240,70 @@ export const navigation = {
         },
       ],
     }
-,    
+, 
+{
+  id: 'home_kitchen',
+  name: 'Home & Kitchen',
+  featured: [
+    {
+      name: 'Modern Home Decor',
+      href: '/home-kitchen/home-decor',
+      imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
+      imageAlt: 'Beautifully decorated modern living room interior.',
+    },
+    {
+      name: 'Essential Utilities',
+      href: '/home-kitchen/household-utilities',
+      imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg',
+      imageAlt: 'Useful home and kitchen tools neatly arranged on a counter.',
+    },
+  ],
+  sections: [
+    {
+      id: 'home_decor',
+      name: 'Home Decor',
+      items: [
+        { name: 'Wall Art & Paintings', id: 'wall_art', href: '/home-kitchen/home-decor/wall-art' },
+        { name: 'Vases & Planters', id: 'vases_planters', href: '/home-kitchen/home-decor/vases-planters' },
+        { name: 'Candles & Fragrances', id: 'candles_fragrances', href: '/home-kitchen/home-decor/candles-fragrances' },
+        { name: 'Decorative Lights', id: 'decorative_lights', href: '/home-kitchen/home-decor/lights' },
+        { name: 'Clocks & Mirrors', id: 'clocks_mirrors', href: '/home-kitchen/home-decor/clocks-mirrors' },
+      ],
+    },
+    {
+      id: 'kitchen_dining',
+      name: 'Kitchen & Dining',
+      items: [
+        { name: 'Cookware', id: 'cookware', href: '/home-kitchen/kitchen-dining/cookware' },
+        { name: 'Dinnerware', id: 'dinnerware', href: '/home-kitchen/kitchen-dining/dinnerware' },
+        { name: 'Glassware', id: 'glassware', href: '/home-kitchen/kitchen-dining/glassware' },
+        { name: 'Cutlery', id: 'cutlery', href: '/home-kitchen/kitchen-dining/cutlery' },
+        { name: 'Serveware', id: 'serveware', href: '/home-kitchen/kitchen-dining/serveware' },
+      ],
+    },
+    {
+      id: 'household_utilities',
+      name: 'Household Utilities',
+      items: [
+        { name: 'Storage & Organizers', id: 'storage_organizers', href: '/home-kitchen/household-utilities/storage-organizers' },
+        { name: 'Cleaning Supplies', id: 'cleaning_supplies', href: '/home-kitchen/household-utilities/cleaning-supplies' },
+        { name: 'Laundry Essentials', id: 'laundry_essentials', href: '/home-kitchen/household-utilities/laundry' },
+        { name: 'Home Tools & Hardware', id: 'home_tools', href: '/home-kitchen/household-utilities/tools' },
+      ],
+    },
+    {
+      id: 'furnishings',
+      name: 'Furnishings',
+      items: [
+        { name: 'Bedsheets & Bedding', id: 'bedsheets', href: '/home-kitchen/furnishings/bedsheets' },
+        { name: 'Curtains & Blinds', id: 'curtains', href: '/home-kitchen/furnishings/curtains' },
+        { name: 'Cushions & Covers', id: 'cushions', href: '/home-kitchen/furnishings/cushions' },
+        { name: 'Carpets & Rugs', id: 'carpets', href: '/home-kitchen/furnishings/carpets' },
+      ],
+    },
+  ],
+}
+,
 {
   id: 'electronics',
   name: 'Electronics',
@@ -299,7 +362,8 @@ export const navigation = {
       ],
     },
   ],
-},{
+},
+{
   id: 'beauty_wellness',
   name: 'Beauty & Wellness',
   featured: [
