@@ -1,12 +1,9 @@
-const mongoose = require("mongoose");
 const express = require("express");
 const cors = require("cors");
-const { connectDb } = require("./config/db");
 
 const app = express();
 
-// Track MongoDB connection state
-let isDbConnected = false;
+
 
 // Middlewares
 app.use(express.json());
@@ -19,14 +16,7 @@ app.use(
 
 // Default route
 app.get("/", (req, res) => {
-  const dbStatus = isDbConnected
-    ? "✅ MongoDB connected successfully"
-    : "❌ Not connected";
-
-  return res.status(200).send({
-    message: "Welcome to ecommerce API - Node",
-    mongoStatus: dbStatus,
-  });
+  return res.status(200).send({ message: "welcome to ecommerce api - node" });
 });
 
 // Routes
@@ -71,19 +61,15 @@ const ratingRouter = require("./routes/rating.routes.js");
 app.use("/api/ratings", ratingRouter);
 
 const adminOrderRoutes = require("./routes/adminOrder.routes.js");
+const { default: connection } = require("./config/connection.js");
 app.use("/api/admin/orders", adminOrderRoutes);
 
 // Connect DB and Start server
 const PORT = process.env.PORT || 5454;
 
 app.listen(PORT, "0.0.0.0", async () => {
-  try {
-    await connectDb();
-    isDbConnected = mongoose.connection.readyState === 1;
-    console.log(`✅ Ecommerce API running on port ${PORT}`);
-  } catch (err) {
-    console.error("❌ Failed to connect to MongoDB:", err.message);
-  }
+  await connection();
+  console.log(`✅ Ecommerce API running on port ${PORT}`);
 });
 
 module.exports = app;
