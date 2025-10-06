@@ -1,3 +1,4 @@
+const mongoose = require("mongoose"); // make sure mongoose is required at the top
 const express = require("express");
 const cors = require("cors");
 const { connectDb } = require("./config/db");
