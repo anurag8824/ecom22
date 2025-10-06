@@ -1,9 +1,12 @@
-const mongoose = require("mongoose"); // make sure mongoose is required at the top
+const mongoose = require("mongoose");
 const express = require("express");
 const cors = require("cors");
 const { connectDb } = require("./config/db");
 
 const app = express();
+
+// Track MongoDB connection state
+let isDbConnected = false;
 
 // Middlewares
 app.use(express.json());
@@ -14,18 +17,11 @@ app.use(
   })
 );
 
-
 // Default route
 app.get("/", (req, res) => {
-  let dbStatus = "❌ Not connected";
-  
-  // mongoose connection states:
-  // 0 = disconnected, 1 = connected, 2 = connecting, 3 = disconnecting
-  if (mongoose.connection.readyState === 1) {
-    dbStatus = "✅ MongoDB connected successfully";
-  } else if (mongoose.connection.readyState === 2) {
-    dbStatus = "⏳ MongoDB connecting...";
-  }
+  const dbStatus = isDbConnected
+    ? "✅ MongoDB connected successfully"
+    : "❌ Not connected";
 
   return res.status(200).send({
     message: "Welcome to ecommerce API - Node",
@@ -78,11 +74,16 @@ const adminOrderRoutes = require("./routes/adminOrder.routes.js");
 app.use("/api/admin/orders", adminOrderRoutes);
 
 // Connect DB and Start server
-const PORT =  5454;
+const PORT = process.env.PORT || 5454;
 
 app.listen(PORT, "0.0.0.0", async () => {
-  await connectDb();
-  console.log(`✅ Ecommerce API running on port ${PORT}`);
+  try {
+    await connectDb();
+    isDbConnected = mongoose.connection.readyState === 1;
+    console.log(`✅ Ecommerce API running on port ${PORT}`);
+  } catch (err) {
+    console.error("❌ Failed to connect to MongoDB:", err.message);
+  }
 });
 
 module.exports = app;
