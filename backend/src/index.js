@@ -65,9 +65,12 @@ app.use("/api/admin/orders", adminOrderRoutes);
 // Connect DB and Start server
 const PORT = process.env.PORT || 5454;
 const connection = require("./config/connection.js");
-app.listen(PORT, "0.0.0.0", async () => {
-  connection();
-  console.log(`✅ Ecommerce API running on port ${PORT}`);
+
+connection().then(() => {
+  app.listen(PORT, "0.0.0.0", () => {
+    console.log(`✅ Ecommerce API running on port ${PORT}`);
+  });
 });
+
 
 module.exports = app;
