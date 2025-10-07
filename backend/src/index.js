@@ -2,8 +2,8 @@ const express = require("express");
 const cors = require("cors");
 
 const app = express();
-
-
+const connection = require("./config/connection.js");
+connection();
 
 // Middlewares
 app.use(express.json());
@@ -61,14 +61,13 @@ const ratingRouter = require("./routes/rating.routes.js");
 app.use("/api/ratings", ratingRouter);
 
 const adminOrderRoutes = require("./routes/adminOrder.routes.js");
-const { default: connection } = require("./config/connection.js");
+
 app.use("/api/admin/orders", adminOrderRoutes);
 
 // Connect DB and Start server
 const PORT = process.env.PORT || 5454;
 
 app.listen(PORT, "0.0.0.0", async () => {
-  await connection();
   console.log(`✅ Ecommerce API running on port ${PORT}`);
 });
 
