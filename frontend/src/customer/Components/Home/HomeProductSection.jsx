@@ -20,7 +20,7 @@ const HomeProductSection = ({ section, data }) => {
   return (
     <div className="relative px-2 sm:px-6 lg:px-8">
       {/* Section Title */}
-      <h2 className="text-2xl font-extrabold text-gray-900 py-5">{section} </h2>
+      {/* <h2 className="text-2xl font-extrabold text-gray-900 py-5">{section} </h2> */}
 
       {/* Product Grid */}
       <div

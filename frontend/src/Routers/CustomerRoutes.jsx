@@ -20,6 +20,8 @@ import PaymentSuccess from "../customer/Components/paymentSuccess/PaymentSuccess
 import RateProduct from "../customer/Components/ReviewProduct/RateProduct";
 import Navbar from "../customer/Components/Navbar/Navbar";
 import Wishlist from "../customer/Components/Wishlist/Wishlist";
+import SubCategoryList from "../Pages/SubCategoryList";
+import SubListProducts from "../Pages/SubListProducts";
 
 const CustomerRoutes = () => {
     const location = useLocation();
@@ -53,6 +55,10 @@ const CustomerRoutes = () => {
                         <Route path="/account/rate/:productId" element={<RateProduct />} />
                         <Route path="/payment/:orderId" element={<PaymentSuccess />} />
                         <Route path="/wishlist" element={<Wishlist />} />
+                        <Route path="/sub-category-list/:categoryId" element={<SubCategoryList />} />
+                        <Route path="/from-subcategory/:subcategoryId" element={<SubListProducts />} />
+
+
                     </Routes>
                 </main>
                 

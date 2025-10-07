@@ -27,10 +27,12 @@ const CreateSubCategoryForm = () => {
   const categoryList = categories?.data || [];
 
   useEffect(() => {
-    if (jwt) {
+    // if (jwt) {
       dispatch(getCategories(jwt));
-    }
+    // }
   }, [dispatch, jwt]);
+
+  console.log("Categories:", categoryList);
 
   const handleSubmit = (e) => {
     e.preventDefault();

@@ -3,12 +3,19 @@ import HomeCarousel from "../customer/Components/Carousel/HomeCarousel";
 import { homeCarouselData } from "../customer/Components/Carousel/HomeCaroselData";
 import HomeProductSection from "../customer/Components/Home/HomeProductSection";
 import { API_BASE_URL } from "../config/api";
-import Home4block from "./Home4block";
-import Home4block2 from "./Home4block2";
-import Home4block3 from "./Home4block3";
+import { Link } from "react-router-dom";
+import Home4block3 from "../Pages/Home4block3";
+import Home4block2 from "../Pages/Home4block2";
+import Home4block from "../Pages/Home4block";
+
+
+
 
 const Homepage = () => {
   const [categories, setCategories] = useState([]);
+  const [subCategories, setSubCategories] = useState([]);
+
+
   const [productsByCategory, setProductsByCategory] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -25,6 +32,8 @@ const Homepage = () => {
     }
   };
 
+
+
   const getAllCategories = async () => {
     try {
       const response = await fetch(`${API_BASE_URL}/api/categories`);
@@ -35,6 +44,40 @@ const Homepage = () => {
       throw new Error(`Error fetching categories: ${error.message}`);
     }
   };
+
+  const getAllSubCategories = async () => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/subcategories`);
+      if (!response.ok) throw new Error('Failed to fetch categories');
+      const result = await response.json();
+      return result.data; // Extract the data array from the response
+    } catch (error) {
+      throw new Error(`Error fetching categories: ${error.message}`);
+    }
+  };
+
+  useEffect(() => {
+    const fetchSubCategories = async () => {
+      try {
+        const subCategoriesData = await getAllSubCategories();
+        setSubCategories(subCategoriesData); // ✅ store data in state
+
+        console.log(subCategoriesData, "subcategoriesData");
+      } catch (error) {
+        console.error("Error fetching subcategories:", error);
+      }
+    };
+
+    fetchSubCategories();
+  }, []);
+
+
+
+
+
+
+
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -88,7 +131,7 @@ const Homepage = () => {
       </div>
     );
   }
-  console.log(categories,"categoriess")
+  console.log(categories, "categoriess")
 
   return (
     <div className="">
@@ -119,36 +162,50 @@ const Homepage = () => {
 
 
       <div className="grid grid-cols-3 md:grid-cols-3 gap-4 p-4">
+
         <img
           src="https://rukminim3.flixcart.com/fk-p-flap/143/185/image/a1a2e3849ba7feb8.jpg?q=60"
           alt="banner"
           className="w-full h-auto rounded-lg shadow"
         />
-        <img
-          src="https://rukminim3.flixcart.com/fk-p-flap/143/185/image/55c7f71351a92130.jpg?q=60"
-          alt="banner"
-          className="w-full h-auto rounded-lg shadow"
-        />
-        <img
-          src="	https://rukminim3.flixcart.com/fk-p-flap/143/185/image/c93a4de0c0119508.jpg?q=60"
-          alt="banner"
-          className="w-full h-auto rounded-lg shadow"
-        />
+        <Link to="sub-category-list/68e4e87ffadd326202b97dc4">
+          <img
+            src="https://rukminim3.flixcart.com/fk-p-flap/143/185/image/55c7f71351a92130.jpg?q=60"
+            alt="banner"
+            className="w-full h-auto rounded-lg shadow"
+          /></Link>
+        <Link to="sub-category-list/68e4e84bfadd326202b97dbe"
+        >
+          <img
+            src="	https://rukminim3.flixcart.com/fk-p-flap/143/185/image/c93a4de0c0119508.jpg?q=60"
+            alt="banner"
+            className="w-full h-auto rounded-lg shadow"
+          /></Link>
+
+<Link to="sub-category-list/68e50949fadd326202b98747"
+          >
+
+         
         <img
           src="https://rukminim3.flixcart.com/fk-p-flap/143/185/image/b021c7b6849d1a25.jpg?q=60"
           alt="banner"
           className="w-full h-auto rounded-lg shadow"
-        />
+        /> </Link>
+        <Link to="from-subcategory/68e506affadd326202b984ec">
         <img
           src="	https://rukminim3.flixcart.com/fk-p-flap/143/185/image/6c143d8d948ca743.jpg?q=60"
           alt="banner"
           className="w-full h-auto rounded-lg shadow"
         />
+        </Link>
+        <Link to={"from-subcategory/68e507f4fadd326202b985d3"}>      
         <img
           src="	https://rukminim3.flixcart.com/fk-p-flap/143/185/image/8ea4f46898f03b83.jpg?q=60"
           alt="banner"
           className="w-full h-auto rounded-lg shadow"
         />
+          </Link>
+         
         <img
           src="	https://rukminim3.flixcart.com/fk-p-flap/143/185/image/5dbf838835a264e2.jpg?q=60"
           alt="banner"
@@ -241,7 +298,61 @@ const Homepage = () => {
       </div>
 
 
-      <div className="space-y-10 py-20">
+
+
+
+      <div className="space-y-10 my-2 py-20 hidden">
+
+        <div className="grid grid-cols-3 sm:grid-cols-3 gap-4">
+          {categories?.map((category) => (
+            <Link to={`/sub-category-list/${category._id}`}
+              key={category._id}
+              className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 cursor-pointer"
+            >
+              <img
+                src={category.image}
+                alt={category.name}
+                className="w-full"
+              />
+              <div className="p-1 text-center">
+                <span className="text-xs font-semibold">{category.name}</span>
+              </div>
+            </Link>
+          ))}
+        </div>
+
+
+      </div>
+
+      <div className="space-y-10 my-2 py-20">
+
+        <div className="grid grid-cols-3 sm:grid-cols-3 gap-4">
+          {subCategories?.map((sub) => (
+            <Link
+              to={`/from-subcategory/${sub._id}`}
+              key={sub._id}
+              className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 cursor-pointer"
+            >
+              <img
+                src={sub.image}
+                alt={sub.name}
+                className="w-full h-40 object-cover"
+              />
+              <div className="p-1 text-center">
+                <span className="text-xs font-semibold">{sub.name}</span>
+                {/* optional: show parent category name if you want */}
+                {sub.category && sub.category[0]?.name && (
+                  <p className="text-[10px] text-gray-500 mt-1">
+                    {sub.category[0].name}
+                  </p>
+                )}
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      <div className="space-y-10 my-2 py-20">
         {categories.map((category) => {
           const products = productsByCategory[category._id];
 
@@ -264,6 +375,9 @@ const Homepage = () => {
           </div>
         )}
       </div>
+
+
+
     </div>
   );
 };
