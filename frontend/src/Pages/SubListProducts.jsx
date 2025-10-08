@@ -45,7 +45,7 @@ const SubListProducts = () => {
   if (error) return <p className="text-red-500">{error}</p>;
 
   return (
-    <div className="py-20  mt-4 px-4">
+    <div className="py-20  mt-4 px-1">
       
       <HomeProductSection
             //   key={category._id}
