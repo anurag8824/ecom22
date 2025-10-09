@@ -93,7 +93,7 @@ const Homepage = () => {
 
         // You can limit to specific categories or fetch all
         // For better performance, consider fetching only featured categories
-        const featuredCategories = categoriesData.slice(0, 4); // Limit to first 4 categories
+        const featuredCategories = categoriesData // Limit to first 4 categories
 
         for (const category of featuredCategories) {
           try {
@@ -133,12 +133,46 @@ const Homepage = () => {
   }
   console.log(categories, "categoriess")
 
+
+  const banners = [
+    {
+      src: "https://rukminim3.flixcart.com/fk-p-flap/143/185/image/702b2eda36e09053.jpg?q=60",
+      alt: "banner",
+      link: "/from-subcategory/68e69787eed6eb3957c8c8ee"
+    },
+    {
+      src: "https://rukminim3.flixcart.com/fk-p-flap/143/185/image/26cc3e0fd60489f5.jpg?q=60",
+      alt: "banner",
+      link: "/from-subcategory/68e68712eed6eb3957c8c418"
+    },
+    {
+      src: "https://rukminim3.flixcart.com/fk-p-flap/143/185/image/c93a4de0c0119508.jpg?q=60",
+      alt: "banner",
+      link: "sub-category-list/68e4e84bfadd326202b97dbe"
+    },
+    {
+      src: "https://rukminim3.flixcart.com/fk-p-flap/143/185/image/55c7f71351a92130.jpg?q=60",
+      alt: "banner",
+      link: "sub-category-list/68e4e87ffadd326202b97dc4"
+    },
+    {
+      src: "https://rukminim3.flixcart.com/fk-p-flap/143/185/image/f7641aaca46d117d.jpg?q=60",
+      alt: "banner",
+      link: "/from-subcategory/68e688b5eed6eb3957c8c4ae"
+    },
+    {
+      src: "https://rukminim3.flixcart.com/fk-p-flap/143/185/image/5dbf838835a264e2.jpg?q=60",
+      alt: "banner",
+      link: "/from-subcategory/68e69247eed6eb3957c8c85e"
+    }
+  ];
+
+
   return (
     <div className="">
       <div>
         <img className="w-full" src="https://rukminim3.flixcart.com/fk-p-flap/780/108/image/06d7d6cc488d4f2f.jpg?q=60" />
       </div>
-
 
       <div>
         <img className="w-full" src="https://rukminim3.flixcart.com/fk-p-flap/780/108/image/97194f4d7d713631.jpg?q=60" />
@@ -149,78 +183,17 @@ const Homepage = () => {
         <img src="	https://rukminim3.flixcart.com/fk-p-flap/1558/135/image/fe8aef563bbd1231.jpg?q=60" />
       </div>
 
-
-
-
-      <div className="hidden md:block">
-        <img src="https://rukminim3.flixcart.com/fk-p-flap/1558/224/image/41fc5c22a3d4101c.jpg?q=60" />
-      </div>
-
-
-
-
-
-
+      {/* Top Best trending categories  */}
       <div className="grid grid-cols-3 md:grid-cols-3 gap-4 p-4">
-
-        <img
-          src="https://rukminim3.flixcart.com/fk-p-flap/143/185/image/a1a2e3849ba7feb8.jpg?q=60"
-          alt="banner"
-          className="w-full h-auto rounded-lg shadow"
-        />
-        <Link to="sub-category-list/68e4e87ffadd326202b97dc4">
-          <img
-            src="https://rukminim3.flixcart.com/fk-p-flap/143/185/image/55c7f71351a92130.jpg?q=60"
-            alt="banner"
-            className="w-full h-auto rounded-lg shadow"
-          /></Link>
-        <Link to="sub-category-list/68e4e84bfadd326202b97dbe"
-        >
-          <img
-            src="	https://rukminim3.flixcart.com/fk-p-flap/143/185/image/c93a4de0c0119508.jpg?q=60"
-            alt="banner"
-            className="w-full h-auto rounded-lg shadow"
-          /></Link>
-
-<Link to="sub-category-list/68e50949fadd326202b98747"
-          >
-
-         
-        <img
-          src="https://rukminim3.flixcart.com/fk-p-flap/143/185/image/b021c7b6849d1a25.jpg?q=60"
-          alt="banner"
-          className="w-full h-auto rounded-lg shadow"
-        /> </Link>
-        <Link to="from-subcategory/68e506affadd326202b984ec">
-        <img
-          src="	https://rukminim3.flixcart.com/fk-p-flap/143/185/image/6c143d8d948ca743.jpg?q=60"
-          alt="banner"
-          className="w-full h-auto rounded-lg shadow"
-        />
-        </Link>
-        <Link to={"from-subcategory/68e507f4fadd326202b985d3"}>      
-        <img
-          src="	https://rukminim3.flixcart.com/fk-p-flap/143/185/image/8ea4f46898f03b83.jpg?q=60"
-          alt="banner"
-          className="w-full h-auto rounded-lg shadow"
-        />
+        {banners?.map((banner, index) => (
+          <Link key={index} to={banner.link}>
+            <img
+              src={banner.src}
+              alt={banner.alt}
+              className="w-full h-auto rounded-lg shadow"
+            />
           </Link>
-         
-        <img
-          src="	https://rukminim3.flixcart.com/fk-p-flap/143/185/image/5dbf838835a264e2.jpg?q=60"
-          alt="banner"
-          className="w-full h-auto rounded-lg shadow"
-        />
-        <img
-          src="https://rukminim3.flixcart.com/fk-p-flap/143/185/image/f7641aaca46d117d.jpg?q=60"
-          alt="banner"
-          className="w-full h-auto rounded-lg shadow"
-        />
-        <img
-          src="https://rukminim3.flixcart.com/fk-p-flap/143/185/image/92df6945be8b0a92.jpg?q=60"
-          alt="banner"
-          className="w-full h-auto rounded-lg shadow"
-        />
+        ))}
       </div>
 
       <div>
@@ -231,20 +204,41 @@ const Homepage = () => {
         <img className="w-full" src="https://rukminim3.flixcart.com/fk-p-flap/780/173/image/0a9751c6915b8884.jpg?q=60" />
       </div>
 
-      <Home4block />
+      <div className="space-y-10 my-2 py-20">
+        {categories?.map((category) => {
+          const products = productsByCategory[category._id];
+          console.log(products, "products of category", categories);
+
+          // Only render section if products exist for this category
+          if (!products || products.length === 0) return null;
+
+          return (
+            <HomeProductSection
+              key={category._id}
+              data={products}
+              section={category.name}
+            />
+          );
+        })}
+
+        {/* Fallback message if no categories/products */}
+        {categories.length === 0 && (
+          <div className="text-center py-20">
+            <p className="text-gray-500">No products available at the moment.</p>
+          </div>
+        )}
+      </div>
 
 
       <div>
         <img className="w-full" src="https://rukminim3.flixcart.com/fk-p-flap/780/173/image/26d3f957d73c7fe3.jpg?q=60" />
       </div>
-      <Home4block2 />
 
 
       <div>
         <img className="w-full" src="https://rukminim3.flixcart.com/fk-p-flap/780/108/image/a5c59bcd87f8faf4.jpg?q=60" />
       </div>
-
-      <Home4block3 />
+      
 
 
 
@@ -352,29 +346,7 @@ const Homepage = () => {
         </div>
       </div>
 
-      <div className="space-y-10 my-2 py-20">
-        {categories.map((category) => {
-          const products = productsByCategory[category._id];
 
-          // Only render section if products exist for this category
-          if (!products || products.length === 0) return null;
-
-          return (
-            <HomeProductSection
-              key={category._id}
-              data={products}
-              section={category.name}
-            />
-          );
-        })}
-
-        {/* Fallback message if no categories/products */}
-        {categories.length === 0 && (
-          <div className="text-center py-20">
-            <p className="text-gray-500">No products available at the moment.</p>
-          </div>
-        )}
-      </div>
 
 
 
