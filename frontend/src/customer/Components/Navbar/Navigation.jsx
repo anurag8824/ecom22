@@ -344,12 +344,12 @@ export default function Navigation() {
                       startIcon={<UserIcon className="h-4 w-4" />}
                       className="justify-start"
                     >
-                      Sign In
+                      Sign Ine
                     </Button>
                   </div>
                 )}
 
-                <Tab.Group as="div" className="mt-2">
+                <Tab.Group as="div" className="mt-2 hidden">
                   <div className="border-b border-gray-200">
                     <Tab.List className="-mb-px flex space-x-8 px-4 overflow-x-auto">
                       {navigation.categories.map((category) => (
@@ -420,6 +420,7 @@ export default function Navigation() {
                     </div>
                   ))}
                 </div>
+                
               </Dialog.Panel>
             </Transition.Child>
           </div>

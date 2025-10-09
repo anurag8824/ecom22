@@ -330,6 +330,7 @@ import { getAllReviews } from "../../../../Redux/Customers/Review/Action";
 import { gounsPage1 } from "../../../../Data/Gouns/gouns";
 import { addToWishlist } from "../../../../Redux/Customers/Wishlist/Action";
 import ImageDiv from "../../../../Pages/ImageDiv";
+import SimilarProducts from "./SimilarProducts";
 
 // Dummy offers data
 const offers = [
@@ -376,6 +377,9 @@ export default function ProductDetails() {
   const [shareOpen, setShareOpen] = useState(false);
   const [copied, setCopied] = useState(false);
   const [reviews, setReviews] = useState([]);
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -497,6 +501,24 @@ export default function ProductDetails() {
     { stars: 1, percentage: 3, count: 1286 }
   ];
 
+
+
+  const images = [
+    currentProduct?.imageUrl,
+    currentProduct?.imageUrl2,
+    currentProduct?.imageUrl3,
+    currentProduct?.imageUrl4,
+  ].filter(Boolean); // Removes any undefined images
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  };
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+
+  };
+
   return (
     <div className="bg-white min-h-screen">
       {/* Alert Snackbar */}
@@ -513,7 +535,26 @@ export default function ProductDetails() {
         {/* Image Section with Overlay Buttons */}
         <div className="relative bg-white">
           <div className="relative">
-            <img src={currentProduct?.imageUrl} alt={currentProduct?.title} className="w-full h-[450px] object-contain" />
+          <img
+        src={images[currentIndex]}
+        alt={currentProduct?.title}
+        className="w-full h-[500px] object-contain"
+      />
+
+      {/* Carousel Controls */}
+      <button
+        onClick={prevSlide}
+        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-lg hover:bg-gray-100"
+      >
+        &#10094;
+      </button>
+      <button
+        onClick={nextSlide}
+        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-lg hover:bg-gray-100"
+      >
+        &#10095;
+      </button>
+
             
             {/* Diwali Sale Banner */}
             <div className="absolute top-4 left-0 bg-gradient-to-r from-[rgb(106,74,191)] to-[rgb(187,164,249)] text-white px-4 py-1.5 text-xs font-bold shadow-lg rounded-r-full flex items-center space-x-1">
@@ -683,19 +724,7 @@ export default function ProductDetails() {
         {/* Similar Products */}
         <div className="bg-white px-4 py-4">
           <h3 className="text-sm font-semibold text-gray-900 mb-3">Similar Products</h3>
-          <div className="flex overflow-x-auto space-x-3 pb-2 -mx-4 px-4 scrollbar-hide">
-            {gounsPage1.slice(0, 6).map((item, index) => (
-              <div key={index} className="flex-shrink-0 w-32">
-                <div className="border border-gray-200 rounded-lg overflow-hidden">
-                  <img src={item.image} alt={item.title} className="w-full h-40 object-cover" />
-                  <div className="p-2">
-                    <p className="text-xs text-gray-900 font-medium truncate">{item.brand}</p>
-                    <p className="text-xs font-bold text-gray-900">₹{item.selling_price}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+          <SimilarProducts subcategoryId={currentProduct?.subCategory?._id} />
         </div>
 
         {/* Fixed Bottom Bar */}
@@ -716,7 +745,25 @@ export default function ProductDetails() {
           {/* Left - Image */}
           <div className="sticky top-6 h-fit">
             <div className="relative bg-white rounded-lg overflow-hidden border border-gray-200">
-              <img src={currentProduct?.imageUrl} alt={currentProduct?.title} className="w-full h-[600px] object-contain" />
+            <img
+        src={images[currentIndex]}
+        alt={currentProduct?.title}
+        className="w-full h-[500px] object-contain"
+      />
+
+      {/* Carousel Controls */}
+      <button
+        onClick={prevSlide}
+        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-lg hover:bg-gray-100"
+      >
+        &#10094;
+      </button>
+      <button
+        onClick={nextSlide}
+        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-lg hover:bg-gray-100"
+      >
+        &#10095;
+      </button>
               
               {/* Diwali Sale Banner */}
               <div className="absolute top-4 left-0 bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 text-sm font-bold shadow-lg rounded-r-full flex items-center space-x-2">
@@ -903,19 +950,7 @@ export default function ProductDetails() {
         {/* Similar Products */}
         <div className="mt-12 border-t border-gray-200 pt-8">
           <h3 className="text-xl font-bold text-gray-900 mb-6">Similar Products</h3>
-          <div className="grid grid-cols-6 gap-4">
-            {gounsPage1?.slice(0, 6).map((item, index) => (
-              <div key={index} className="border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
-                <img src={item?.image} alt={item.title} className="w-full h-48 object-cover" />
-                <div className="p-3">
-                  <p className="text-sm text-gray-900 font-medium truncate">{item?.brand}</p>
-                  <p className="text-xs text-gray-600 truncate mb-2">{item?.title}</p>
-                  <p className="text-sm font-bold text-gray-900">₹{item?.selling_price}</p>
-                  <p className="text-xs text-gray-500 line-through">₹{item?.price}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <SimilarProducts subcategoryId={currentProduct?.subCategory?._id} />
         </div>
       </div>
 

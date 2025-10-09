@@ -21,6 +21,9 @@ const initialSizes = [
 
 const initialProductData = {
   imageUrl: "",
+  imageUrl2: "",
+  imageUrl3: "",
+  imageUrl4: "",
   brand: "",
   title: "",
   color: "",
@@ -102,6 +105,36 @@ const CreateProductForm = () => {
               label="Image URL"
               name="imageUrl"
               value={productData.imageUrl}
+              onChange={handleChange}
+            />
+          </Grid>
+
+          <Grid item xs={12}>
+            <TextField
+              fullWidth
+              label="Image URL 2"
+              name="imageUrl2"
+              value={productData.imageUrl2}
+              onChange={handleChange}
+            />
+          </Grid>
+
+          <Grid item xs={12}>
+            <TextField
+              fullWidth
+              label="Image URL 3"
+              name="imageUrl3"
+              value={productData.imageUrl3}
+              onChange={handleChange}
+            />
+          </Grid>
+
+          <Grid item xs={12}>
+            <TextField
+              fullWidth
+              label="Image URL 4"
+              name="imageUrl4"
+              value={productData.imageUrl4}
               onChange={handleChange}
             />
           </Grid>
