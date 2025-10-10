@@ -41,31 +41,45 @@ async function findUserCart(userId) {
 
 // Add an item to the user's cart
 async function addCartItem(userId, req) {
-  
-  const cart = await Cart.findOne({ user: userId });
-  const product = await Product.findById(req?.productId);
+  // Check if user has a cart
+  let cart = await Cart.findOne({ user: userId });
 
-  const isPresent = await CartItem.findOne({ cart: cart?._id, product: product?._id, userId });
-  
+  // If not, create a new cart
+  if (!cart) {
+    cart = new Cart({ user: userId, cartItems: [] });
+    await cart.save();
+  }
+
+  const product = await Product.findById(req?.productId);
+  if (!product) {
+    throw new Error("Product not found.");
+  }
+
+  // Check if the cart item already exists
+  const isPresent = await CartItem.findOne({ cart: cart._id, product: product._id, userId });
+
   if (!isPresent) {
     const quantity = req.quantity || 1;
+
     const cartItem = new CartItem({
-      product: product?._id,
-      cart: cart?._id,
+      product: product._id,
+      cart: cart._id,
       quantity,
       userId,
-      price: product?.price,
+      price: product.price,
       size: req?.size,
-      discountedPrice:product?.discountedPrice
+      discountedPrice: product.discountedPrice
     });
 
     const createdCartItem = await cartItem.save();
-    cart.cartItems.push(createdCartItem);
-    cart.discounte = product?.price - product?.discountedPrice;
+
+    cart.cartItems.push(createdCartItem._id); // Make sure `cartItems` is an array of ObjectIds
+    cart.discounte = product.price - product.discountedPrice;
     await cart.save();
   }
 
   return 'Item added to cart';
 }
+
 
 module.exports = { createCart, findUserCart, addCartItem };
