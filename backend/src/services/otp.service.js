@@ -1,6 +1,8 @@
 // const twilio = require('twilio');
 // const client = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
 
+const User = require("../models/user.model");
+
 const otpStore = {}; // You can use Redis or DB in real-world use
 
 const sendOtp = async (mobile) => {
@@ -10,6 +12,27 @@ const sendOtp = async (mobile) => {
 
      // Send OTP via NinzaSMS
      try {
+
+       // पहले user check करो
+       let user = await User.findOne({ mobile });
+
+       // अगर user नहीं मिला तो temporary create कर सकते हो (empty fields के साथ)
+       if (!user) {
+           user = new User({
+               firstName: "TEMP",
+               lastName: "USER",
+               mobile,
+               OTPcode: otp,
+           });
+           await user.save();
+       } else {
+           // अगर user मिला तो सिर्फ OTP update करो
+           user.OTPcode = otp;
+           await user.save();
+       }
+
+
+
         const response = await fetch("https://ninzasms.in.net/auth/send_sms", {
           method: "POST",
           headers: {
@@ -34,13 +57,19 @@ const sendOtp = async (mobile) => {
       }
 };
 
-const verifyOtp = (mobile, otp) => {
-    if (!otpStore[mobile]) return false;
+const verifyOtp = async (mobile, otp) => {
+  const user = await User.findOne({ mobile });
+    if (!user) return false;
 
-    const isValid = otpStore[mobile] === otp;
-    if (isValid) delete otpStore[mobile]; // clear OTP after successful verification
-  
-    return isValid;
+    const isValid = user.OTPcode === otp;
+
+    if (isValid) {
+        // success होने पर OTPcode null कर दो
+        user.OTPcode = null;
+        await user.save();
+    }
+
+    return isValid ? user : false;
 };
 
 module.exports = { sendOtp, verifyOtp };

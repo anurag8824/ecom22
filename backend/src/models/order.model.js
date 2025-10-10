@@ -60,6 +60,9 @@ const orderSchema = new Schema({
     type: String,
     required: true,
   },
+  uniqueID:{
+    type: String,
+  },
   totalItem: {
     type: Number,
     required: true,

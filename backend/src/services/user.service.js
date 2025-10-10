@@ -15,33 +15,51 @@ const createUser = async (userData) => {
     try {
         let { firstName, lastName, email = "", password, role, mobile, dob } = userData;
 
-        const isUserExist = await User.findOne({  mobile });
+        // पहले mobile से user check करो
+        let user = await User.findOne({ mobile });
 
-        if (isUserExist) {
-            throw new Error(`User already exists with mobile`);
+        // अगर user exist करता है
+        if (user) {
+            // OTP वाले temp user को proper user में convert कर दो
+            let hashedPassword = user.password; 
+            if (password) {
+                hashedPassword = await bcrypt.hash(password, 8);
+            }
+
+            user.firstName = firstName || user.firstName;
+            user.lastName = lastName || user.lastName;
+            user.email = email || user.email;
+            user.password = hashedPassword;
+            user.role = role || user.role;
+            user.dob = dob || user.dob;
+
+            await user.save();
+
+            console.log("User updated (from OTP temp to registered):", user);
+            return user;
         }
 
-        // Hash password only if it's provided
+        // अगर user exist नहीं करता तो नया बना दो
         let hashedPassword = null;
         if (password) {
             hashedPassword = await bcrypt.hash(password, 8);
         }
 
-        const user = await User.create({
+        user = await User.create({
             firstName,
             lastName,
             email,
             password: hashedPassword,
             role,
             mobile,
-            dob 
+            dob
         });
 
         console.log("User created:", user);
-
         return user;
+
     } catch (error) {
-        console.log("Create User Error -", error.message);
+        console.log("Create/Update User Error -", error.message);
         throw new Error(error.message);
     }
 };

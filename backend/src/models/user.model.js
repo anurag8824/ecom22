@@ -20,6 +20,10 @@ const userSchema = new mongoose.Schema({
     default:""
     // required: true,
   },
+  OTPcode: {
+    type: String,
+    default: null
+  },
   role: {
     type: String,
     required: true,

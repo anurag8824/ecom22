@@ -29,6 +29,8 @@ const getAllUsers = async (req, res) => {
 const getUserById = async (req, res) => {
     try {
         const { id } = req.params;
+
+        console.log("Fetching user with ID:", id);
         
         if (!id) {
             return res.status(400).send({ error: "User ID is required" });

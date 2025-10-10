@@ -24,8 +24,12 @@ const verifyOtp = async (req, res) => {
         }
 
         const user = await userService.getUserByMobile(mobile);
+        console.log("User found for mobile", mobile, ":", user);
+        
 
-        if (!user) {
+          // User exist करता है तो Login करा दो
+          if (user.firstName === "TEMP" && user.lastName === "USER") {
+            // मतलब ये नया user है (केवल OTP के लिए temp बनाया गया था)
             return res.status(200).json({
                 newUser: true,
                 message: "User not registered. Please complete registration.",
