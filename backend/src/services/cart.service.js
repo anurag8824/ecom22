@@ -15,7 +15,7 @@ async function createCart(user) {
 async function findUserCart(userId) {
   let cart =await Cart.findOne({ user: userId })
   
-  let cartItems=await CartItem.find({cart:cart._id}).populate("product")
+  let cartItems=await CartItem.find({cart:cart?._id}).populate("product")
 
   cart.cartItems=cartItems
   
@@ -45,13 +45,13 @@ async function addCartItem(userId, req) {
   const cart = await Cart.findOne({ user: userId });
   const product = await Product.findById(req.productId);
 
-  const isPresent = await CartItem.findOne({ cart: cart._id, product: product._id, userId });
+  const isPresent = await CartItem.findOne({ cart: cart?._id, product: product?._id, userId });
   
   if (!isPresent) {
     const quantity = req.quantity || 1;
     const cartItem = new CartItem({
-      product: product._id,
-      cart: cart._id,
+      product: product?._id,
+      cart: cart?._id,
       quantity,
       userId,
       price: product.price,
