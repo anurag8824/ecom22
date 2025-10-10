@@ -17,14 +17,14 @@ async function findUserCart(userId) {
   
   let cartItems=await CartItem.find({cart:cart?._id}).populate("product")
 
-  cart.cartItems=cartItems
+  cart.cartItems = cartItems
   
 
   let totalPrice = 0;
   let totalDiscountedPrice = 0;
   let totalItem = 0;
 
-  for (const cartItem of cart?.cartItems) {
+  for (const cartItem of cart.cartItems) {
     totalPrice += cartItem.price;
     totalDiscountedPrice += cartItem.discountedPrice;
     totalItem += cartItem.quantity;
