@@ -75,8 +75,11 @@ export default function LoginUserForm() {
 
   return (
     <React.Fragment>
-      <form onSubmit={handleVerifyOtp}>
-        <Grid container spacing={3}>
+      <form style={{
+        marginLeft: "35px",
+        marginRight: "35px"
+      }} onSubmit={handleVerifyOtp}>
+        <Grid container spacing={4}>
           <Grid item xs={12}>
             <TextField
               label="Mobile"
