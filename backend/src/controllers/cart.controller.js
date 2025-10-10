@@ -7,8 +7,9 @@ const cartService=require("../services/cart.service.js");
 
 const findUserCart = async (req, res) => {
     try {
-      const user = req.user;
-      const cart = await cartService.findUserCart(user.id);
+      const user = req?.user;
+      const cart = await cartService.findUserCart(user?.id);
+      console.log("Cart found for user:", user, cart);
       res.status(200).json(cart);
     } catch (error) {
       // Handle error here and send appropriate response
@@ -19,8 +20,9 @@ const findUserCart = async (req, res) => {
 
   const addItemToCart = async (req, res) => {
     try {
-      const user = req.user;
-      await cartService.addCartItem(user._id.toString(), req.body);
+      const user = req?.user;
+      console.log("User from request:", user);
+      await cartService.addCartItem(user?._id?.toString(), req.body);
      
       res.status(202).json({message:"Item Added To Cart Successfully", status:true});
     } catch (error) {
