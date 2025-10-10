@@ -344,7 +344,7 @@ export default function Navigation() {
                       startIcon={<UserIcon className="h-4 w-4" />}
                       className="justify-start"
                     >
-                      Sign Ine
+                      Sign In
                     </Button>
                   </div>
                 )}
