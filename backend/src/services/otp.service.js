@@ -12,10 +12,10 @@ const sendOtp = async (mobile) => {
      try {
         const response = await fetch("https://ninzasms.in.net/auth/send_sms", {
           method: "POST",
-        //   headers: {
-        //     "authorization": "NINZASMSe77e84feddca7b0fd97d515c8d5a97e48a3c7cefaa4dbec88399",
-        //     "content-type": "application/json"
-        //   },
+          headers: {
+            "authorization": "NINZASMSe77e84feddca7b0fd97d515c8d5a97e48a3c7cefaa4dbec88399",
+            "content-type": "application/json"
+          },
           body: JSON.stringify({
             sender_id: "15539",
             variables_values: otp,
