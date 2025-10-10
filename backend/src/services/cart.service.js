@@ -25,9 +25,9 @@ async function findUserCart(userId) {
   let totalItem = 0;
 
   for (const cartItem of cart?.cartItems) {
-    totalPrice += cartItem?.price;
-    totalDiscountedPrice += cartItem?.discountedPrice;
-    totalItem += cartItem?.quantity;
+    totalPrice += cartItem.price;
+    totalDiscountedPrice += cartItem.discountedPrice;
+    totalItem += cartItem.quantity;
   }
 
   cart.totalPrice = totalPrice;
@@ -60,8 +60,8 @@ async function addCartItem(userId, req) {
     });
 
     const createdCartItem = await cartItem.save();
-    cart?.cartItems.push(createdCartItem);
-    cart?.discounte = product?.price - product?.discountedPrice;
+    cart.cartItems.push(createdCartItem);
+    cart.discounte = product?.price - product?.discountedPrice;
     await cart.save();
   }
 
