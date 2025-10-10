@@ -24,16 +24,16 @@ async function findUserCart(userId) {
   let totalDiscountedPrice = 0;
   let totalItem = 0;
 
-  for (const cartItem of cart.cartItems) {
-    totalPrice += cartItem.price;
-    totalDiscountedPrice += cartItem.discountedPrice;
-    totalItem += cartItem.quantity;
+  for (const cartItem of cart?.cartItems) {
+    totalPrice += cartItem?.price;
+    totalDiscountedPrice += cartItem?.discountedPrice;
+    totalItem += cartItem?.quantity;
   }
 
-  cart.totalPrice = totalPrice;
-  cart.totalItem = totalItem;
-  cart.totalDiscountedPrice = totalDiscountedPrice;
-  cart.discounte = totalPrice - totalDiscountedPrice;
+  cart?.totalPrice = totalPrice;
+  cart?.totalItem = totalItem;
+  cart?.totalDiscountedPrice = totalDiscountedPrice;
+  cart?.discounte = totalPrice - totalDiscountedPrice;
 
   // const updatedCart = await cart.save();
   return cart;
@@ -43,7 +43,7 @@ async function findUserCart(userId) {
 async function addCartItem(userId, req) {
   
   const cart = await Cart.findOne({ user: userId });
-  const product = await Product.findById(req.productId);
+  const product = await Product.findById(req?.productId);
 
   const isPresent = await CartItem.findOne({ cart: cart?._id, product: product?._id, userId });
   
@@ -54,14 +54,14 @@ async function addCartItem(userId, req) {
       cart: cart?._id,
       quantity,
       userId,
-      price: product.price,
-      size: req.size,
-      discountedPrice:product.discountedPrice
+      price: product?.price,
+      size: req?.size,
+      discountedPrice:product?.discountedPrice
     });
 
     const createdCartItem = await cartItem.save();
-    cart.cartItems.push(createdCartItem);
-    cart.discounte = product.price - product.discountedPrice;
+    cart?.cartItems.push(createdCartItem);
+    cart?.discounte = product?.price - product?.discountedPrice;
     await cart.save();
   }
 
