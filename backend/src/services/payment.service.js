@@ -72,7 +72,7 @@ const createPaymentLink= async (orderId)=>{
           app_id,
           trade_type: 'INRUPI',      //INRUPI         // test channel for collection
           order_sn: orderId.toString(),  // unique order number
-          money: order.totalPrice * 100,                // order amount
+          money: order.totalDiscountedPrice * 100,                // order amount
           notify_url: 'https://api.enjoy-call.me/api/callback', // your callback URL
           return_url: 'https://enjoy-call.me', // user redirect URL
           subject: 'Test Order'            // order description

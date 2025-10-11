@@ -117,6 +117,10 @@ const ProductsTable = () => {
     dispatch(deleteProduct(productId));
   };
 
+  const handleEditProduct = (productId) => {
+    dispatch(deleteProduct(productId));
+  };
+
   return (
     <Box width={"100%"}>
       <Card className="p-3">
@@ -205,6 +209,7 @@ const ProductsTable = () => {
                 <TableCell align="center">Subcategory</TableCell>
                 <TableCell align="center">Price</TableCell>
                 <TableCell align="center">Quantity</TableCell>
+                <TableCell align="center">Edit</TableCell>
                 <TableCell align="center">Delete</TableCell>
               </TableRow>
             </TableHead>
@@ -226,6 +231,11 @@ const ProductsTable = () => {
                     <TableCell align="center">{item.subCategory?.name || "-"}</TableCell>
                     <TableCell align="center">{item.discountedPrice}</TableCell>
                     <TableCell align="center">{item.quantity}</TableCell>
+                    <TableCell align="center">
+                      <Button variant="text" color="error" onClick={() => handleDeleteProduct(item._id)}>
+                        Edit
+                      </Button>
+                    </TableCell>
                     <TableCell align="center">
                       <Button variant="text" color="error" onClick={() => handleDeleteProduct(item._id)}>
                         Delete
