@@ -411,6 +411,7 @@ export default function ProductDetails() {
     if (!jwt || isTokenExpired(jwt)) {
       if (typeof window !== 'undefined') localStorage.removeItem("jwt");
       showAlertMsg("Please login or signup to continue", "warning");
+      navigate("/login");
       return false;
     }
     return true;

@@ -45,6 +45,16 @@ export default function Navigation() {
     }
   }, [jwt]);
 
+
+  const pathname = location.pathname;
+  useEffect(() => {
+    if (pathname === "/login") {
+      setOpenAuthModal(true);
+    } else {
+      setOpenAuthModal(false);
+    }
+  }, [pathname]);
+
   useEffect(() => {
     if (searchQuery.trim() && searchQuery.length > 2) {
       const timeoutId = setTimeout(() => {
@@ -104,6 +114,7 @@ export default function Navigation() {
     setOpenAuthModal(true);
     navigate("/login");
   };
+
 
   const handleClose = () => {
     setOpenAuthModal(false);
