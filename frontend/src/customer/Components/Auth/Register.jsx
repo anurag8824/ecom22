@@ -44,7 +44,10 @@ export default function RegisterUserForm() {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form style={{
+        marginLeft: "35px",
+        marginRight: "35px"
+      }} onSubmit={handleSubmit}>
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <TextField
