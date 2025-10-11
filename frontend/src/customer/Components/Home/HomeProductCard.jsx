@@ -6,6 +6,7 @@ const HomeProductCard = ({ product }) => {
   const navigate = useNavigate();
 
   const handleProductClick = () => {
+    window.scrollTo(0, 0);
     navigate(`/product/${product?._id}`);
   };
 

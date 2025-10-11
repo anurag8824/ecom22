@@ -65,8 +65,8 @@ const createPaymentLink= async (orderId)=>{
         //   callback_method: 'get',
         // };
         const url = 'https://www.lg-pay.com/api/order/create';
-        const key = 'rjmRrFvpvWQKx2g52pfWBR5OLZREyTKH';
-        const app_id = 'YD4480';
+        const key = 'zuJlDWzmUk1CAdRLjubfd5nzC2MbSaIM';
+        const app_id = 'YD4523';
     
         const params = {
           app_id,

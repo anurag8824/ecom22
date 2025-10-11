@@ -50,9 +50,13 @@ export default function Navigation() {
   useEffect(() => {
     if (pathname === "/login") {
       setOpenAuthModal(true);
-    } else {
-      setOpenAuthModal(false);
-    }
+    } 
+  }, [pathname]);
+
+  useEffect(() => {
+    if (pathname === "/register") {
+      setOpenAuthModal(true);
+    } 
   }, [pathname]);
 
   useEffect(() => {
