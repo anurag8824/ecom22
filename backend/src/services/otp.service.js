@@ -6,9 +6,9 @@ const User = require("../models/user.model");
 const otpStore = {}; // You can use Redis or DB in real-world use
 
 const sendOtp = async (mobile) => {
-    // const otp = Math.floor(100000 + Math.random() * 900000).toString();
+    const otp = Math.floor(100000 + Math.random() * 900000).toString();
 
-    const otp = "000000";
+  
 
 
     otpStore[mobile] = otp;
@@ -39,11 +39,11 @@ const sendOtp = async (mobile) => {
         const response = await fetch("https://ninzasms.in.net/auth/send_sms", {
           method: "POST",
           headers: {
-            "authorization": "new keys iwanr ",
+            "authorization": "NINZASMSb60e6b72aacd424cb585df17381239c98f9abdccba55a4a32cbe",
             "content-type": "application/json"
           },
           body: JSON.stringify({
-            sender_id: "15539",
+            sender_id: "15609",
             variables_values: otp,
             numbers: mobile, // phone number from body
           }),

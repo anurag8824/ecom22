@@ -204,6 +204,54 @@ const Homepage = () => {
         <img className="w-full" src="https://rukminim3.flixcart.com/fk-p-flap/780/173/image/0a9751c6915b8884.jpg?q=60" />
       </div>
 
+
+
+    
+
+
+
+      <div className="space-y-10 my-2 py-20">
+
+        <div className="grid grid-cols-3 sm:grid-cols-3 gap-4">
+          {subCategories?.map((sub) => (
+            <Link
+              to={`/from-subcategory/${sub._id}`}
+              key={sub._id}
+              className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 cursor-pointer"
+            >
+              <img
+                src={sub.image}
+                alt={sub.name}
+                className="w-full h-40 object-cover"
+              />
+              <div className="p-1 text-center">
+                <span className="text-xs font-semibold">{sub.name}</span>
+                {/* optional: show parent category name if you want */}
+                {sub.category && sub.category[0]?.name && (
+                  <p className="text-[10px] text-gray-500 mt-1">
+                    {sub.category[0].name}
+                  </p>
+                )}
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+
+
+
+
+
+      <div>
+        <img className="w-full" src="https://rukminim3.flixcart.com/fk-p-flap/780/173/image/26d3f957d73c7fe3.jpg?q=60" />
+      </div>
+
+
+      <div>
+        <img className="w-full" src="https://rukminim3.flixcart.com/fk-p-flap/780/108/image/a5c59bcd87f8faf4.jpg?q=60" />
+      </div>
+      
+
       <div className="space-y-10 my-2 py-20">
         {categories?.map((category) => {
           const products = productsByCategory[category._id];
@@ -228,17 +276,6 @@ const Homepage = () => {
           </div>
         )}
       </div>
-
-
-      <div>
-        <img className="w-full" src="https://rukminim3.flixcart.com/fk-p-flap/780/173/image/26d3f957d73c7fe3.jpg?q=60" />
-      </div>
-
-
-      <div>
-        <img className="w-full" src="https://rukminim3.flixcart.com/fk-p-flap/780/108/image/a5c59bcd87f8faf4.jpg?q=60" />
-      </div>
-      
 
 
 
