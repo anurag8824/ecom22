@@ -18,7 +18,8 @@ const verifyOtp = async (req, res) => {
     const { mobile, otp } = req.body;
 
     try {
-        const isValid = otpService.verifyOtp(mobile, otp);
+        const isValid = await otpService.verifyOtp(mobile, otp);
+        console.log("OTP verification result for mobile", mobile, ":", isValid);
         if (!isValid) {
             return res.status(400).json({ message: "Invalid OTP" });
         }
