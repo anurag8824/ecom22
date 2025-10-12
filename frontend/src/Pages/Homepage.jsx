@@ -209,34 +209,39 @@ const Homepage = () => {
     
 
 
+      <div className="my-8 py-10 bg-gray-50">
+  <div className="max-w-6xl mx-auto px-4">
 
-      <div className="space-y-10 my-2 py-20">
+    <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4 justify-items-center">
+      {subCategories?.map((sub) => (
+        <Link
+          to={`/from-subcategory/${sub._id}`}
+          key={sub._id}
+          className="group bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 w-[140px] h-[180px] flex flex-col items-center overflow-hidden hover:-translate-y-1"
+        >
+          <div className="w-full h-[100px] overflow-hidden">
+            <img
+              src={sub.image}
+              alt={sub.name}
+              className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+            />
+          </div>
+          <div className="p-2 text-center flex-1 flex flex-col justify-center">
+            <span className="text-sm font-bold text-gray-800 group-hover:text-indigo-600 transition-colors">
+              {sub.name}
+            </span>
+            {/* {sub.category && sub.category[0]?.name && (
+              <p className="text-[10px] text-gray-500 mt-1">
+                {sub.category[0].name}
+              </p>
+            )} */}
+          </div>
+        </Link>
+      ))}
+    </div>
+  </div>
+</div>
 
-        <div className="grid grid-cols-3 sm:grid-cols-3 gap-4">
-          {subCategories?.map((sub) => (
-            <Link
-              to={`/from-subcategory/${sub._id}`}
-              key={sub._id}
-              className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 cursor-pointer"
-            >
-              <img
-                src={sub.image}
-                alt={sub.name}
-                className="w-full h-40 object-cover"
-              />
-              <div className="p-1 text-center">
-                <span className="text-xs font-semibold">{sub.name}</span>
-                {/* optional: show parent category name if you want */}
-                {sub.category && sub.category[0]?.name && (
-                  <p className="text-[10px] text-gray-500 mt-1">
-                    {sub.category[0].name}
-                  </p>
-                )}
-              </div>
-            </Link>
-          ))}
-        </div>
-      </div>
 
 
 
