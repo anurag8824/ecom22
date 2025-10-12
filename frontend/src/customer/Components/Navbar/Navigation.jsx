@@ -314,13 +314,13 @@ export default function Navigation() {
                           height: 40,
                         }}
                       >
-                        {auth.user?.firstName[0].toUpperCase()}
+                        {/* {auth.user?.firstName[0].toUpperCase()} */}U
                       </Avatar>
                       <div>
                         <p className="text-sm font-medium text-gray-900">
-                          {auth.user?.firstName} {auth.user?.lastName}
+                          {auth.user?.mobile}
                         </p>
-                        <p className="text-xs text-gray-500">{auth.user?.email}</p>
+                        {/* <p className="text-xs text-gray-500">{auth.user?.email}</p> */}
                       </div>
                     </div>
                     <div className="mt-4 space-y-2">

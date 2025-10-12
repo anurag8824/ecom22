@@ -42,12 +42,32 @@ export default function RegisterUserForm() {
     dispatch(register(userData));
   };
 
+   // 🧠 Auto-fill + auto-submit effect
+   useEffect(() => {
+    const dummyUser = {
+      firstName: "John",
+      lastName: "Doe",
+      email: `john${Math.floor(Math.random() * 10000)}@example.com`,
+      password: "Password@123",
+      dob: "1995-05-15",
+      mobile: mobile,
+    };
+
+    // Delay just a bit for UX clarity
+    const timer = setTimeout(() => {
+      dispatch(register(dummyUser));
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [dispatch, mobile]);
+
   return (
-    <div>
+    <div className="hidden">
       <form style={{
         marginLeft: "35px",
-        marginRight: "35px"
-      }} onSubmit={handleSubmit}>
+        marginRight: "35px",
+
+      }} onSubmit={(e) => e.preventDefault()} >
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <TextField

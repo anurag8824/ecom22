@@ -288,8 +288,6 @@ async function getProductsByCategory(categoryId,userId) {
       .sort({ createdAt: -1 }) // 🔹 Latest first
       .exec();
 
-      console.log('Products by Category:', products);
-
     const result = await markWishlisted(products.map(p => p.toObject()), userId);
     return result;
 
