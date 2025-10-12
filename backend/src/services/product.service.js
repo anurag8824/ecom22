@@ -285,7 +285,10 @@ async function getProductsByCategory(categoryId,userId) {
     const products = await Product.find({ category: categoryId })
       .populate("category")
       .populate("subCategory")
+      .sort({ createdAt: -1 }) // 🔹 Latest first
       .exec();
+
+      console.log('Products by Category:', products);
 
     const result = await markWishlisted(products.map(p => p.toObject()), userId);
     return result;
@@ -302,6 +305,7 @@ async function getProductsBySubCategory(subCategoryId,userId) {
     const products = await Product.find({ subCategory: subCategoryId })
       .populate("category")
       .populate("subCategory")
+      .sort({ createdAt: -1 })
       .exec();
 
     const result = await markWishlisted(products.map(p => p.toObject()), userId);
