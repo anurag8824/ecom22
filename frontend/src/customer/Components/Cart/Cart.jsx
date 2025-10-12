@@ -10,7 +10,7 @@ const Cart = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const jwt = localStorage.getItem("jwt");
-  const {cart}=useSelector(store=>store);
+  const {cart} = useSelector(store=>store);
   // console.log("cart ",cart)
 
   useEffect(() => {

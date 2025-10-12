@@ -620,7 +620,7 @@ export default function ProductDetails() {
         <div className="bg-white px-4 py-4 border-b-8 border-gray-100">
           <div className="flex items-center justify-between">
             <span className="text-sm font-medium text-gray-700">Delivery</span>
-            <span className="text-xs text-red-600 font-medium">Not available at your location</span>
+            <span className="text-xs text-red-600 font-medium">Delivery available to all over India within 2 days</span>
           </div>
         </div>
 

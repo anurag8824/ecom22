@@ -35,7 +35,7 @@ const PaymentSuccess = () => {
     if (paymentId && paymentStatus === "paid") {
       const data = { orderId, paymentId, jwt };
       dispatch(updatePayment(data));
-      dispatch(getOrderById(orderId));
+      dispatch(getOrderById(orderId , jwt));
     }
   }, [orderId, paymentId]);
 

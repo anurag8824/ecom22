@@ -17,7 +17,7 @@ const OrderDetails = () => {
   const { order } = useSelector((store) => store);
 
   useEffect(() => {
-    dispatch(getOrderById(orderId));
+    dispatch(getOrderById(orderId ,jwt));
   }, [orderId]);
 
   const currentOrder = order.order;

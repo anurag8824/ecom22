@@ -26,7 +26,7 @@ export const createOrder = (reqData) => async (dispatch) => {
 
     const { data } = await api.post(
       `${API_BASE_URL}/api/orders/`,
-      reqData.address,
+      reqData.address, config
     );
     
     if (data._id) {
@@ -49,13 +49,18 @@ export const createOrder = (reqData) => async (dispatch) => {
   }
 };
 
-export const getOrderById = (orderId) => async (dispatch) => {
+export const getOrderById = (orderId , jwt) => async (dispatch) => {
   // console.log("get order req ", orderId);
   try {
     dispatch({ type: GET_ORDER_BY_ID_REQUEST });
 
+    const config = jwt
+    ? { headers: { Authorization: `Bearer ${jwt}` } }
+    : {};
+
+   
     const { data } = await api.get(
-      `/api/orders/${orderId}`,
+      `/api/orders/${orderId}`, config
       
     );
     // console.log("order by id ", data);
@@ -85,7 +90,7 @@ export const getOrderHistory = (reqData) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await api.get(`/api/orders/user`);
+    const { data } = await api.get(`/api/orders/user` , config);
     console.log("order history -------- ", data);
     dispatch({
       type: GET_ORDER_HISTORY_SUCCESS,

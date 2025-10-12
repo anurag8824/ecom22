@@ -21,7 +21,7 @@ console.log("orderId ", order)
 
 useEffect(()=>{
   
-  dispatch(getOrderById(orderId))
+  dispatch(getOrderById(orderId, jwt));
 },[orderId])
 
 const handleCreatePayment=()=>{
