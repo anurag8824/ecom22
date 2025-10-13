@@ -13,9 +13,10 @@ async function createCart(user) {
 
 // Find a user's cart and update cart details
 async function findUserCart(userId) {
-  let cart =await Cart.findOne({ user: userId })
+  let cart = await Cart.findOne({ user: userId })
+  if (!cart) return null;
   
-  let cartItems=await CartItem.find({cart:cart?._id}).populate("product")
+  let cartItems = await CartItem.find({cart:cart?._id}).populate("product")
 
   cart.cartItems = cartItems
   
@@ -30,10 +31,35 @@ async function findUserCart(userId) {
     totalItem += cartItem.quantity;
   }
 
+  // ✅ Group items by subCategory
+  const subCategoryGroups = {};
+  for (const item of cart.cartItems) {
+    const subCatId = item.product.subCategory?.toString();
+    if (!subCategoryGroups[subCatId]) subCategoryGroups[subCatId] = [];
+    subCategoryGroups[subCatId].push(item);
+  }
+
+    // ✅ Apply "Buy 1 Get 1 Free" style discount for same subcategory
+    let sameCategoryDiscount = 0;
+
+    for (const subCatId in subCategoryGroups) {
+      const group = subCategoryGroups[subCatId];
+  
+      if (group.length > 1) {
+        // find the minimum discountedPrice in this subcategory group
+        const minDiscountedItem = group.reduce((min, item) =>
+          item.discountedPrice < min.discountedPrice ? item : min
+        );
+        sameCategoryDiscount += minDiscountedItem.discountedPrice;
+      }
+    }
+
+
   cart.totalPrice = totalPrice;
   cart.totalItem = totalItem;
-  cart.totalDiscountedPrice = totalDiscountedPrice;
-  cart.discounte = totalPrice - totalDiscountedPrice;
+  cart.totalDiscountedPrice = totalDiscountedPrice - sameCategoryDiscount;
+  cart.discounte = totalPrice - (totalDiscountedPrice - sameCategoryDiscount);
+  cart.sameCategoryDiscount = sameCategoryDiscount;
 
   // const updatedCart = await cart.save();
   return cart;
