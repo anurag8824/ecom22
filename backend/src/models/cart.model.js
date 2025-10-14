@@ -32,6 +32,9 @@ const cartSchema = new mongoose.Schema({
     required: true,
     default:0
   },
+  sameCategoryDiscount:{
+    type: Number,
+  }
 });
 
 const Cart = mongoose.model('cart', cartSchema);

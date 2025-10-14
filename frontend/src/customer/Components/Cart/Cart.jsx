@@ -39,8 +39,13 @@ const Cart = () => {
               <span>Price ({cart.cart?.totalItem} item)</span>
               <span>₹{cart.cart.totalPrice}</span>
             </div>
+           
+           {cart.cart?.sameCategoryDiscount ?  <div className="flex justify-between">
+              <span>Buy 1 Get 1 Offer Discount</span>
+              <span className="text-red-700">-₹{cart.cart?.sameCategoryDiscount}</span>
+            </div> : ""}
             <div className="flex justify-between">
-              <span>Discount</span>
+              <span>Total Discount</span>
               <span className="text-green-700">-₹{cart.cart?.discounte}</span>
             </div>
             <div className="flex justify-between">

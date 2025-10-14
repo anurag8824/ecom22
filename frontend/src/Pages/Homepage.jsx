@@ -270,7 +270,7 @@ const Homepage = () => {
             
       <div>
       <img style={{height: "90px"}} className="w-full" src="https://redtape.com/cdn/shop/files/logo.png?v=1704870276&width=360" />
-        <img className="w-full" src="https://t4.ftcdn.net/jpg/05/46/82/47/360_F_546824763_qlcg1mXaPIBQj4qmXkNXFbDeQdjnpfgQ.jpg" />
+        <img className="w-full" src="/REDTAPE.png" />
       </div>
             <HomeProductSection
               key={category._id}
