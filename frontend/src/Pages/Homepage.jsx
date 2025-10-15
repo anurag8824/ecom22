@@ -150,20 +150,16 @@ const Homepage = () => {
       alt: "banner",
       link: "sub-category-list/68e4e84bfadd326202b97dbe"
     },
-    {
-      src: "https://rukminim3.flixcart.com/fk-p-flap/143/185/image/55c7f71351a92130.jpg?q=60",
-      alt: "banner",
-      link: "sub-category-list/68e4e87ffadd326202b97dc4"
-    },
+  
     {
       src: "https://rukminim3.flixcart.com/fk-p-flap/143/185/image/f7641aaca46d117d.jpg?q=60",
       alt: "banner",
       link: "/from-subcategory/68e688b5eed6eb3957c8c4ae"
     },
     {
-      src: "https://rukminim3.flixcart.com/fk-p-flap/143/185/image/5dbf838835a264e2.jpg?q=60",
+      src: "https://rukminim3.flixcart.com/fk-p-flap/143/185/image/6c143d8d948ca743.jpg?q=60",
       alt: "banner",
-      link: "/from-subcategory/68e69247eed6eb3957c8c85e"
+      link: "/from-subcategory/68e506affadd326202b984ec"
     }
   ];
 
@@ -200,16 +196,14 @@ const Homepage = () => {
         <img className="w-full" src=" https://rukminim3.flixcart.com/fk-p-flap/780/108/image/322bfa268d54d167.jpg?q=60" />
       </div>
 
-      <div>
-        <img className="w-full" src="https://rukminim3.flixcart.com/fk-p-flap/780/173/image/0a9751c6915b8884.jpg?q=60" />
-      </div>
+      
 
 
 
     
 
 
-      <div className="my-8 py-10 bg-gray-50">
+      <div className="my-8 py-10 bg-gray-50 hidden">
   <div className="max-w-6xl mx-auto px-4">
 
     <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4 justify-items-center">
@@ -247,9 +241,6 @@ const Homepage = () => {
 
 
 
-      <div>
-        <img className="w-full" src="https://rukminim3.flixcart.com/fk-p-flap/780/173/image/26d3f957d73c7fe3.jpg?q=60" />
-      </div>
 
 
       <div>
