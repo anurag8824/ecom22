@@ -150,7 +150,7 @@ const Homepage = () => {
       alt: "banner",
       link: "sub-category-list/68e4e84bfadd326202b97dbe"
     },
-  
+
     {
       src: "https://rukminim3.flixcart.com/fk-p-flap/143/185/image/f7641aaca46d117d.jpg?q=60",
       alt: "banner",
@@ -180,7 +180,7 @@ const Homepage = () => {
       </div>
 
       {/* Top Best trending categories  */}
-      <div className="grid grid-cols-3 md:grid-cols-3 gap-4 p-4">
+      {/* <div className="grid grid-cols-3 md:grid-cols-3 gap-4 p-4">
         {banners?.map((banner, index) => (
           <Link key={index} to={banner.link}>
             <img
@@ -190,63 +190,103 @@ const Homepage = () => {
             />
           </Link>
         ))}
+      </div> */}
+      
+      <div>
+      <img style={{ height: "90px" }} className="w-full" src="https://redtape.com/cdn/shop/files/logo.png?v=1704870276&width=360" />
       </div>
+
+      <div>
+      <img className="w-full" src="https://rukminim3.flixcart.com/fk-p-flap/780/108/image/a5c59bcd87f8faf4.jpg?q=60" />
+      </div>
+
+
+
+     
+
+
+
+
+
+
+
+
+
+
+      <div className="my-8 py-10 bg-gray-50 ">
+        <div className="max-w-6xl mx-auto px-4">
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 justify-items-center max-w-7xl mx-auto">
+            {subCategories?.map((sub) => (
+              <Link
+                to={`/from-subcategory/${sub._id}`}
+                key={sub._id}
+                style={{ background: "#5f9ea0" }}
+                className="group w-full aspect-[4/5]  rounded-xl shadow-xl hover:shadow-2xl 
+                 transition-all duration-500 border border-gray-100 overflow-hidden 
+                 transform hover:-translate-y-2 hover:scale-[1.02] cursor-pointer
+                 flex flex-col"
+              >
+                {/* Image Section - Fixed at 70% height */}
+                <div className="w-full flex-shrink-0 bg-gray-100 overflow-hidden relative flex items-center justify-center"
+                  style={{ height: '70%' }}>
+
+                  {/* Main Image */}
+                  <img
+                    src={sub.image}
+                    alt={sub.name}
+                    className="w-full h-full object-cover object-center 
+                     transform group-hover:scale-110 transition-transform duration-500"
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                      const fallback = e.target.nextElementSibling;
+                      if (fallback) {
+                        fallback.classList.remove('opacity-0', 'pointer-events-none');
+                        fallback.classList.add('opacity-100');
+                      }
+                      e.target.onerror = null;
+                    }}
+                  />
+
+                  {/* Image Fallback */}
+                  <div className="absolute inset-0 flex flex-col items-center justify-center text-gray-400 opacity-0 transition-opacity duration-300 pointer-events-none">
+                    <svg className="w-8 h-8 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-12 5h12a2 2 0 002-2V7a2 2 0 00-2-2H8a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                    </svg>
+                    <span className="text-xs font-semibold">No Image</span>
+                  </div>
+
+                  {/* Subtle Overlay on Hover */}
+                  <div className="absolute inset-0 bg-indigo-500 opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none"></div>
+                </div>
+
+                {/* Text Section - Fixed at 30% height */}
+                <div className="flex-shrink-0 flex items-center justify-center text-center bg-gray-50 group-hover:bg-indigo-50 transition-colors duration-300"
+                  style={{ height: '20%' }}>
+                  <span className="text-sm font-extrabold uppercase tracking-wide text-gray-700 
+                         group-hover:text-indigo-600 transition-colors duration-300 
+                         line-clamp-2">
+                    {sub.name}
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
 
       <div>
         <img className="w-full" src=" https://rukminim3.flixcart.com/fk-p-flap/780/108/image/322bfa268d54d167.jpg?q=60" />
+
       </div>
 
-      
-
-
-
-    
-
-
-      <div className="my-8 py-10 bg-gray-50 hidden">
-  <div className="max-w-6xl mx-auto px-4">
-
-    <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4 justify-items-center">
-      {subCategories?.map((sub) => (
-        <Link
-          to={`/from-subcategory/${sub._id}`}
-          key={sub._id}
-          className="group bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 w-[140px] h-[180px] flex flex-col items-center overflow-hidden hover:-translate-y-1"
-        >
-          <div className="w-full h-[100px] overflow-hidden">
-            <img
-              src={sub.image}
-              alt={sub.name}
-              className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
-            />
-          </div>
-          <div className="p-2 text-center flex-1 flex flex-col justify-center">
-            <span className="text-sm font-bold text-gray-800 group-hover:text-indigo-600 transition-colors">
-              {sub.name}
-            </span>
-            {/* {sub.category && sub.category[0]?.name && (
-              <p className="text-[10px] text-gray-500 mt-1">
-                {sub.category[0].name}
-              </p>
-            )} */}
-          </div>
-        </Link>
-      ))}
-    </div>
-  </div>
-</div>
-
-
-
-
-
-
-
-
-      <div>
-        <img className="w-full" src="https://rukminim3.flixcart.com/fk-p-flap/780/108/image/a5c59bcd87f8faf4.jpg?q=60" />
-      </div>
-      
 
       <div className="space-y-10 my-2 py-20">
         {categories?.map((category) => {
@@ -258,16 +298,15 @@ const Homepage = () => {
 
           return (
             <>
-            
-      <div>
-      <img style={{height: "90px"}} className="w-full" src="https://redtape.com/cdn/shop/files/logo.png?v=1704870276&width=360" />
-        <img className="w-full" src="/REDTAPE.png" />
-      </div>
-            <HomeProductSection
-              key={category._id}
-              data={products}
-              section={category.name}
-            />
+
+              <div>
+                <img className="w-full" src="/REDTAPE.png" />
+              </div>
+              <HomeProductSection
+                key={category._id}
+                data={products}
+                section={category.name}
+              />
             </>
           );
         })}
@@ -358,28 +397,62 @@ const Homepage = () => {
 
       </div>
 
+
+
       <div className="space-y-10 my-2 py-20">
 
-        <div className="grid grid-cols-3 sm:grid-cols-3 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 justify-items-center max-w-7xl mx-auto">
           {subCategories?.map((sub) => (
             <Link
               to={`/from-subcategory/${sub._id}`}
               key={sub._id}
-              className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 cursor-pointer"
+              style={{ background: "#5f9ea0" }}
+              className="group w-full aspect-[4/5]  rounded-xl shadow-xl hover:shadow-2xl 
+                 transition-all duration-500 border border-gray-100 overflow-hidden 
+                 transform hover:-translate-y-2 hover:scale-[1.02] cursor-pointer
+                 flex flex-col"
             >
-              <img
-                src={sub.image}
-                alt={sub.name}
-                className="w-full h-40 object-cover"
-              />
-              <div className="p-1 text-center">
-                <span className="text-xs font-semibold">{sub.name}</span>
-                {/* optional: show parent category name if you want */}
-                {sub.category && sub.category[0]?.name && (
-                  <p className="text-[10px] text-gray-500 mt-1">
-                    {sub.category[0].name}
-                  </p>
-                )}
+              {/* Image Section - Fixed at 70% height */}
+              <div className="w-full flex-shrink-0 bg-gray-100 overflow-hidden relative flex items-center justify-center"
+                style={{ height: '70%' }}>
+
+                {/* Main Image */}
+                <img
+                  src={sub.image}
+                  alt={sub.name}
+                  className="w-full h-full object-cover object-center 
+                     transform group-hover:scale-110 transition-transform duration-500"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    const fallback = e.target.nextElementSibling;
+                    if (fallback) {
+                      fallback.classList.remove('opacity-0', 'pointer-events-none');
+                      fallback.classList.add('opacity-100');
+                    }
+                    e.target.onerror = null;
+                  }}
+                />
+
+                {/* Image Fallback */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-gray-400 opacity-0 transition-opacity duration-300 pointer-events-none">
+                  <svg className="w-8 h-8 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-12 5h12a2 2 0 002-2V7a2 2 0 00-2-2H8a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                  </svg>
+                  <span className="text-xs font-semibold">No Image</span>
+                </div>
+
+                {/* Subtle Overlay on Hover */}
+                <div className="absolute inset-0 bg-indigo-500 opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none"></div>
+              </div>
+
+              {/* Text Section - Fixed at 30% height */}
+              <div className="flex-shrink-0 flex items-center justify-center text-center bg-gray-50 group-hover:bg-indigo-50 transition-colors duration-300"
+                style={{ height: '20%' }}>
+                <span className="text-sm font-extrabold uppercase tracking-wide text-gray-700 
+                         group-hover:text-indigo-600 transition-colors duration-300 
+                         line-clamp-2">
+                  {sub.name}
+                </span>
               </div>
             </Link>
           ))}

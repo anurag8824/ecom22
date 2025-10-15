@@ -28,6 +28,8 @@ const HomeCarousel = () => {
       infinite
       autoPlayInterval={2000}
       disableButtonsControls
+      className="no-margin-carousel"
+
     />
   );
 };
