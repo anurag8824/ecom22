@@ -48,6 +48,16 @@ const SubListProducts = () => {
 
   return (
     <div className="py-20  mt-4 px-1">
+
+<div className="relative w-full h-[159px] mb-3 md:h-[400px] lg:h-[500px] overflow-hidden rounded-2xl shadow-lg">
+    <img
+      className="w-full h-full object-cover brightness-90 hover:brightness-100 transition-all duration-500"
+      src="/banner.jpg"
+      alt="Product Banner"
+    />
+
+
+  </div>
       
       <HomeProductSection
             //   key={category._id}
