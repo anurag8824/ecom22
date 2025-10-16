@@ -399,7 +399,7 @@ const Homepage = () => {
 
 
 
-      <div className="space-y-10 my-2 py-20">
+      <div className="space-y-10 my-2 py-20 hidden">
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 justify-items-center max-w-7xl mx-auto">
           {subCategories?.map((sub) => (
